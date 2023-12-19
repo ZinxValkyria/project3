@@ -83,16 +83,6 @@ javascript
 const publicKey = 'YOUR_PUBLIC_KEY';
 const privateKey = 'YOUR_PRIVATE_KEY';
 
-Contributing
-
-If you'd like to contribute to the project, please follow the guidelines in CONTRIBUTING.md.
-License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
-css
 
 
-Make sure to customize the sections and content according to the specifics of your application and development environment. If you have specific instructions for contributors or additional details, you can expand on those sections.
-
-ChatGPT can make mista
+# Thanks for reading
