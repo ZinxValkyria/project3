@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // Marvel Comics API keys
 const publicKey = SECRET.MARVEL_API_PUB;
-const privateKey = SECRET.MARVEL_API_PRI';
+const privateKey = SECRET.MARVEL_API_PRI;
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
