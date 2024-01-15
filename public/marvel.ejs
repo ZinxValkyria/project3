@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('header.ejs'); %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css"> 
   <title>Marvel Character App</title>
 </head>
 
 <body>
   <h1>Welcome to the Marvel Character App!</h1>
   <form id="characterForm">
-    <label for="characterName">Enter Character Name:</label>
-    <input type="text" id="characterName" name="character" placeholder="Iron Man">
-    <button type="submit">Get Character Info</button>
+    <label for="characterName">Enter Character Name and hit return to search:</label>
+    <input type="text" id="characterName" name="character" placeholder="Wolverine" >
+    <!-- <button type="submit">Get Character Info</button> -->
   </form>
   <div id="characterInfo"></div>
 

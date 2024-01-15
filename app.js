@@ -1,13 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const crypto = require('crypto');
+const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.set('views', path.join(__dirname, 'public'));
 
 // Marvel Comics API keys
-const publicKey = SECRET.MARVEL_API_PUB;
-const privateKey = SECRET.MARVEL_API_PRI;
+const publicKey = "ec9a3c0941677edd5c57cf7071929d11";
+const privateKey = "b18a73dd711b2d33ff628eeb6466bbde95923bef";
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -22,15 +25,37 @@ function generateMarvelHash() {
   };
 }
 
+app.set('view engine', 'ejs');
+
 // Set up a simple route to serve the HTML page
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.render('index');
 });
+
+app.get('/anime', (req, res) => {
+  res.render('anime');
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
+app.get('/kingdom_hearts', (req, res) => {
+  res.render('kingdom_hearts');
+});
+
+app.get('/marvel', (req, res) => {
+  res.render('marvel');
+});
+
+
+
+
 
 // Set up a route to handle API requests
 app.get('/api/character', async (req, res) => {
   try {
-    const characterName = req.query.character || 'Spider-Man';
+    const characterName = req.query.character;
     const { timestamp, hash } = generateMarvelHash();
 
     // Make a request to the Marvel Comics API
