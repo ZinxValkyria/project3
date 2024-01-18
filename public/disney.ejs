@@ -1,0 +1,43 @@
+<%- include('header.ejs'); %>
+
+<title>Disney Character App</title>
+</head>
+
+<body>
+  <h1>Welcome to the Disney Character App!</h1>
+  <form id="characterForm">
+    <label for="characterName">Enter Character Name and hit return to search:</label>
+    <input type="text" id="characterName" name="character" placeholder="Mickey Mouse">
+  </form>
+  <div id="characterInfo"></div>
+
+  <script id="result">
+    document.getElementById('characterForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const characterName = document.getElementById('characterName').value;
+      fetch(`/api/disney/character?name=${characterName}`)
+        .then(response => response.json())
+        .then(data => {
+          const characterInfoContainer = document.getElementById('characterInfo');
+          characterInfoContainer.innerHTML = '<h2>Disney Characters</h2>';
+
+          data.forEach(character => {
+            characterInfoContainer.innerHTML += `
+              <div>
+                <h3>${character.name}</h3>
+                <p>Franchise: ${character.franchise}</p>
+                <!-- Add other properties as needed -->
+              </div>
+            `;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching Disney character data:', error.message);
+          document.getElementById('characterInfo').innerHTML = '<p>Failed to fetch Disney character data.</p>';
+        });
+    });
+  </script>
+
+</body>
+<footer><%- include('footer.ejs'); %></footer>
+</html>

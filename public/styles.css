@@ -3,13 +3,18 @@ body {
   margin: auto;
   padding: 0;
   background-color: #f8f8f8;
-  align-items: center;}
+  align-items: center;
+  text-align: center;
+
+}
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+  #result p {
+    text-align: center;
+  }
   .form-group {
     display: flex;
     flex-direction: column;
@@ -55,7 +60,9 @@ div {
 #intro {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
-
+h1 {
+  text-align: center;
+}
 #characterInfo {
   height: 200px;
   width: 200px;

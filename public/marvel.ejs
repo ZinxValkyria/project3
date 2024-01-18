@@ -12,17 +12,30 @@
   </form>
   <div id="characterInfo"></div>
 
-  <script>
+  <script id="result">
     document.getElementById('characterForm').addEventListener('submit', function (event) {
       event.preventDefault();
       const characterName = document.getElementById('characterName').value;
       fetch(`/api/character?character=${characterName}`)
         .then(response => response.json())
         .then(data => {
-          document.getElementById('characterInfo').innerHTML = `
+          const characterInfoContainer = document.getElementById('characterInfo');
+          characterInfoContainer.innerHTML = `
             <h2>${data.name}</h2>
             <img src="${data.thumbnail}" alt="${data.name}">
             <p>Description: ${data.description}</p>
+            <p>ID: ${data.id}</p>
+            <p>Modified: ${data.modified}</p>
+            <p>Resource URI: ${data.resourceURI}</p>
+            <p>Comics: ${data.comics.available}</p>
+            <p>Series: ${data.series.available}</p>
+            <p>Stories: ${data.stories.available}</p>
+            <p>Events: ${data.events.available}</p>
+            
+            <p>URLs:</p>
+            <ul>
+              ${data.urls.map(url => `<li><a href="${url.url}" target="_blank">${url.type}</a></li>`).join('')}
+            </ul>
           `;
         })
         .catch(error => {
@@ -31,6 +44,7 @@
         });
     });
   </script>
+  
 </body>
-
+<footer><%- include('footer.ejs'); %></footer>
 </html>

@@ -40,14 +40,44 @@ app.get('/contact', (req, res) => {
   res.render('contact');
 });
 
-app.get('/kingdom_hearts', (req, res) => {
-  res.render('kingdom_hearts');
-});
-
 app.get('/marvel', (req, res) => {
   res.render('marvel');
 });
 
+app.get('/disney', (req, res) => {
+  res.render('disney');
+});
+
+
+app.get('/api/disney/character', async (req, res) => {
+  try {
+    const characterName = req.query.name;
+    const response = await axios.get(`https://api.disneyapi.dev/character?name=${characterName}`);
+    
+    // Respond with JSON data
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching Disney character data:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Sta
+
+
+// Set up a route to handle API requests for Studio Ghibli films
+app.get('/api/anime', async (req, res) => {
+  try {
+    // Make a request to the Studio Ghibli API
+    const response = await axios.get('https://ghibliapi.herokuapp.com/films');
+
+    // Respond with JSON data
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching anime data:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 
 
@@ -68,9 +98,17 @@ app.get('/api/character', async (req, res) => {
 
     // Respond with JSON data
     res.json({
+      id: characterData.id,
       name: characterData.name,
+      description: characterData.description || 'No description available.',
+      modified: characterData.modified,
+      resourceURI: characterData.resourceURI,
       thumbnail: `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`,
-      description: characterData.description || 'No description available.'
+      comics: characterData.comics,
+      series: characterData.series,
+      stories: characterData.stories,
+      events: characterData.events,
+      urls: characterData.urls
     });
   } catch (error) {
     console.error('Error fetching character data:', error.message);
