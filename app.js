@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/anime', (req, res) => {
-  res.render('anime');
+app.get('/movies', (req, res) => {
+  res.render('movies');
 });
 
 app.get('/contact', (req, res) => {
@@ -44,20 +44,27 @@ app.get('/marvel', (req, res) => {
   res.render('marvel');
 });
 
-app.get('/disney', (req, res) => {
-  res.render('disney');
+app.get('/gaming', (req, res) => {
+  res.render('gaming');
 });
 
 
-app.get('/api/disney/character', async (req, res) => {
+app.get('/search', async (req, res) => {
   try {
-    const characterName = req.query.name;
-    const response = await axios.get(`https://api.disneyapi.dev/character?name=${characterName}`);
-    
-    // Respond with JSON data
-    res.json(response.data);
+    const searchQuery = req.query.query;
+    const apiKey = '7930cc9ef2b94485a6ca5cd3d3788bfd'; // Replace with your RAWG API key
+    const apiUrl = 'https://api.rawg.io/api/games';
+    const response = await axios.get(apiUrl, {
+      params: {
+        key: apiKey,
+        search: searchQuery,
+      },
+    });
+
+    const games = response.data.results;
+    res.json(games);
   } catch (error) {
-    console.error('Error fetching Disney character data:', error.message);
+    console.error('Error:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

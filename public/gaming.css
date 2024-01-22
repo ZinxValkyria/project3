@@ -1,0 +1,34 @@
+
+  body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  #results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .game-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .game-card img {
+    width: 100%; /* Make the image fill the container */
+    max-height: 200px; /* Limit the image height */
+    object-fit: cover; /* Preserve aspect ratio and cover the container */
+    margin-bottom: 10px;
+  }

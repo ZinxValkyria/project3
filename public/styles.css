@@ -1,3 +1,6 @@
+
+  
+
 body {
   font-family: 'Arial', sans-serif;
   margin: auto;
@@ -5,7 +8,7 @@ body {
   background-color: #f8f8f8;
   align-items: center;
   text-align: center;
-
+  overflow: hidden;
 }
   form {
     display: flex;
@@ -25,7 +28,7 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -43,7 +46,7 @@ nav a {
 }
 
 main {
-  padding: 20px;
+  padding: 4px;
   border-style:dotted;
 
 }
@@ -75,6 +78,7 @@ h1 {
   display: flex;
 flex-direction: row;
 text-align: center;
+margin-right: auto;
 }
 
 .flex-item {
@@ -86,6 +90,6 @@ img {
   height : 250px;
   width  : auto;
   border-radius: 8px; /* Optional: Add rounded corners */
-  margin-left: 150px;
+  margin-left: 100px;
   margin-right: 50px;
 }

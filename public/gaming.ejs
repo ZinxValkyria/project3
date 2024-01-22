@@ -1,0 +1,46 @@
+<%- include('header.ejs'); %>
+<body>
+  <h1>Welcome to the Game Search App!</h1>
+  
+  <label for="searchInput">Search for a game:</label>
+  <input type="text" id="searchInput" placeholder="Enter a game title">
+  <button onclick="searchGames()">Search</button>
+  
+  <div id="results"></div>
+
+  <script>
+    async function searchGames() {
+      const searchQuery = document.getElementById('searchInput').value;
+      const response = await fetch(`/search?query=${encodeURIComponent(searchQuery)}`);
+      const games = await response.json();
+
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      if (games.length > 0) {
+        games.forEach(game => {
+          const gameInfo = `${game.name} (${game.released})`;
+          const gameElement = document.createElement('div');
+          gameElement.innerHTML = `<p>${gameInfo}</p>`;
+
+          if (game.background_image) {
+            const imageElement = document.createElement('img');
+            imageElement.src = game.background_image;
+            imageElement.alt = `${game.name} Image`;
+            imageElement.style.width = '200px'; // Adjust the size as needed
+            gameElement.appendChild(imageElement);
+          }
+
+          resultsDiv.appendChild(gameElement);
+        });
+      } else {
+        resultsDiv.textContent = 'No results found.';
+      }
+    }
+  </script>
+
+  <footer>
+    <%- include('footer.ejs'); %>
+  </footer>
+</body>
+</html>
