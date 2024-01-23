@@ -15,9 +15,9 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  #result p {
-    text-align: center;
-  }
+  #result {
+    align-items: center;
+    }
   .form-group {
     display: flex;
     flex-direction: column;
@@ -36,6 +36,38 @@ nav {
   background-color: #555;
   padding: 10px;
   text-align: center;
+
+}
+/* Reset some default styles for the list */
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the navigation */
+nav {
+  background-color: #333;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 0 10px;
+}
+
+/* Style the links */
+a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s; /* Add a smooth transition effect for color change */
+}
+
+/* Change link color on hover */
+a:hover {
+  color: gold;
 }
 
 
@@ -69,7 +101,7 @@ h1 {
 #characterInfo {
   height: 200px;
   width: 200px;
-  object-fit: cover;
+  text-align: center;  
 
 }
 

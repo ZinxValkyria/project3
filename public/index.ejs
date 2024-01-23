@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Add your stylesheet link here -->
+  <title>MediaVerse Engine</title>
+</head>
 
 <body>
 
@@ -9,27 +18,26 @@
   <main>
     <!-- Your content goes here -->
     <h2>Welcome to the MediaVerse Engine!</h2>
-    <p>Explore movies, anime and Marvel characters with our powerful search engine.</p>
+    <p>Explore movies, anime, and Marvel characters with our powerful search engine.</p>
   </main>
-    <div id ="intro">
-      <p>Welcome to our laid-back corner of the internet, your go-to spot for a chill exploration of movies, games, and Marvel characters. No frills, just straightforward entertainment at your fingertips. Take a leisurely stroll through our database and discover what suits your mood. It's that simple—no fuss, no hype. Kick back, relax, and let the easygoing vibes of our site be your companion in the world of leisurely entertainment.</p>
-    </div>
-    <div class="flex-container">
-      <div class="flex-item">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><b>Movies/Anime</b></u><a href = "/movies"><img src="aot.jpg"></a>
-      </div>
-      <div class="flex-item">
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<b><u>Marvel</u></b><a href = "/marvel"><img src="im.jpg"></a>
-      </div>
-      <div class="flex-item">
-        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<b><u>Gaming </u></b><a href = "/gaming"><img src="kh.jpg" ></a>
-      </div>
-    </div>
 
- 
+  <div id="intro">
+    <p>Welcome to our laid-back corner of the internet, your go-to spot for a chill exploration of movies, games, and Marvel characters. No frills, just straightforward entertainment at your fingertips. Take a leisurely stroll through our database and discover what suits your mood. It's that simple—no fuss, no hype. Kick back, relax, and let the easygoing vibes of our site be your companion in the world of leisurely entertainment.</p>
+  </div>
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <u><b>Movies/Anime</b></u><a href="/movies"><img src="/resources/aot.jpg" alt="Movies/Anime"></a>
+    </div>
+    <div class="flex-item">
+      <b><u>Marvel</u></b><a href="/marvel"><img src="im.jpg" alt="Marvel"></a>
+    </div>
+    <div class="flex-item">
+      <b><u>Gaming</u></b><a href="/gaming"><img src="kh.jpg" alt="Gaming"></a>
+    </div>
+  </div>
 </body>
- <!-- Include the footer -->
-  <footer>  <%- include('footer.ejs'); %>
+<footer>
+  <%- include('footer.ejs'); %>
 </footer>
-
 </html>
