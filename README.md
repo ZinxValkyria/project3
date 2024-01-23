@@ -1,36 +1,76 @@
-# Your Website Name
 
-## Overview
+Express.js MediaVerse App
 
-Briefly describe your website and its purpose.
+This is a simple Express.js web application that utilizes the Marvel Comics API, RAWG API, and Studio Ghibli API to provide information about Marvel characters, movies, and games.
+Prerequisites
 
-## Table of Contents
+Before running the application, ensure you have the following installed:
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+    Node.js: Download and Install Node.js
+    npm (Node Package Manager): Included with Node.js installation
 
-## Features
+Installation
 
-Highlight the key features of your website.
+    Clone the repository:
 
-## Getting Started
+    bash
 
-Provide instructions on how to set up the project locally.
+git clone https://github.com/your-username/express-marvel-app.git
 
-### Prerequisites
+Navigate to the project directory:
 
-List any software, tools, or dependencies required to run the project.
+bash
 
-### Installation
+cd express-marvel-app
 
-Step-by-step instructions to install and run the project on a local machine.
+Install dependencies:
 
-```bash
-# Example command for installation
-npm install
+bash
+
+    npm install
+
+Configuration
+
+Before running the application, you need to set up your Marvel Comics API and RAWG API keys. Update the following variables in app.js:
+
+javascript
+
+// Marvel Comics API keys
+const publicKey = "your-marvel-public-key";
+const privateKey = "your-marvel-private-key";
+
+// RAWG API key
+const apiKey = 'your-rawg-api-key'; // Replace with your RAWG API key
+
+Usage
+
+Start the server:
+
+bash
+
+npm start
+
+Visit http://localhost:3000 in your web browser to explore the application.
+Endpoints
+
+    /: Home page
+    /movies: Movies page
+    /contact: Contact page
+    /marvel: Marvel characters page
+    /gaming: Gaming page
+    /search: Search for games (uses RAWG API)
+    /api/anime: API endpoint for Studio Ghibli films
+    /api/character: API endpoint for Marvel characters
+
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+Acknowledgments
+
+    Marvel Comics API: https://developer.marvel.com/
+    RAWG Video Games Database API: https://rawg.io/apidocs
+    Studio Ghibli API: https://ghibliapi.herokuapp.com/
+
+Author
+
+Blain Noone
