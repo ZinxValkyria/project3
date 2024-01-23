@@ -1,0 +1,28 @@
+name: Deploy to test server
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+
+    build-frontend-and-push:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v3
+        - name: Docker Login
+          uses: docker/login-action@v2.1.0
+          with:
+            username: zinx666
+            password: ${{ secrets.DOCKER_HUB_API_KEY }}
+            
+
+        - name: Build and push Docker images
+          uses: docker/build-push-action@v4.0.0
+          with:
+             context: .
+             push: true
+             tags: zinx666/myfirstdockerrepo:v2
