@@ -25,4 +25,4 @@ jobs:
           with:
              context: .
              push: true
-             tags: zinx666/myfirstdockerrepo:v2
+             tags: zinx666/mediaverse:latest
