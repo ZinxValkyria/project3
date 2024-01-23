@@ -1,19 +1,38 @@
-
-  
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/resources/at2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .5;
+  filter: blur(5px);
+}
+html{
+  font-family: phudu;
+}
+p {
+font-family: phudu;
+}
 
 body {
+  font-family: phudu;
+  position: relative;
   font-family: 'Arial', sans-serif;
-  margin: auto;
-  padding: 0;
-  background-color: #f8f8f8;
   align-items: center;
   text-align: center;
   overflow: hidden;
+  margin-bottom: 10px;
 }
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  form > label, input{
+    border-radius: 10px;
+
   }
   #result {
     align-items: center;
@@ -23,19 +42,26 @@ body {
     flex-direction: column;
     margin-bottom: 1rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 500px;  
   }
+
+.form-group > textarea {
+  border-radius: 10px;
+}
+
 header {
   background-color: #333;
   color: #fff;
   padding: 10px;
   text-align: center;
+  font-family: phudu;
 }
 
 nav {
   background-color: #555;
   padding: 10px;
   text-align: center;
+  font-family: phudu;
 
 }
 /* Reset some default styles for the list */
@@ -47,6 +73,7 @@ body, ul {
 /* Style the navigation */
 nav {
   background-color: #333;
+  font-family: phudu;
 }
 
 ul {
@@ -78,20 +105,22 @@ nav a {
 }
 
 main {
-  padding: 4px;
+  padding: 20px;
   border-style:dotted;
+  font-family: phudu;
 
 }
 
 footer {
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
+  position:static;
+  width: 100%;
+  bottom: 0;
 }
-div {
-  padding:15px;
-}
+
 #intro {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
