@@ -1,43 +1,52 @@
 provider "aws" {
-  region = "us-west-1"  # Change this to your desired AWS region
+  region = "us-east-1" # Set your desired AWS region
 }
 
-resource "aws_instance" "nodejs_app" {
-  ami           = "ami-08f8df6a79f2d569d"  # Specify a suitable AMI for your region
-  instance_type = "t2.micro"              # Specify an instance type
+resource "aws_vpc" "main" {
+  cidr_block           = var.cidr
+  enable_dns_hostnames = true
 
-  key_name      = ""    # Change this to your EC2 key pair name
+  tags = {
+    Name = "Mediaverse-tf-vpc"
+  }
+}
+
+data "aws_availability_zones" "available" {}
+
+variable "availability_zone_count" {
+  type    = number
+  default = 1
+}
+resource "aws_subnet" "public" {
+  vpc_id                  = aws_vpc.main.id
+  count                   = var.availability_zone_count
+  cidr_block              = "10.0.0.0/24"
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "mediaverse-tf-pub-sn-${count.index + 1}"
+  }
+}
+
+resource "aws_instance" "MediaVerse_instance" {
+  ami           = "ami-0a3c3a20c09d6f377" # Replace with your desired AMI ID
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public[0].id # Assuming you want the first subnet
+
+  key_name = "mediaverse-tf-key" # Replace with your EC2 key pair name
 
   user_data = <<-EOF
               #!/bin/bash
-              sudo apt-get update
-              sudo apt-get install -y nodejs npm
-              git clone https://github.com/ZinxValkyria/MediaVerse /home/ubuntu/app
-              cd /home/ubuntu/app
-              npm install
-              npm start
+              sudo apt-get update -y
+              sudo amazon-linux-extras install docker
+              sudo service docker start
+              sudo usermod -a -G docker ec2-user
+              sudo docker login ${var.docker_user} -p ${var.docker_pass}
+              sudo docker run -d -p 3000:3000 zinx666/mediaverse:latest
               EOF
 
   tags = {
-    Name = "nodejs-app-instance"
-  }
-}
-
-resource "aws_security_group" "nodejs_app_sg" {
-  name        = "nodejs-app-sg"
-  description = "Security group for the Node.js application"
-
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    Name = "example-instance"
   }
 }
