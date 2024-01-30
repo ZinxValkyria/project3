@@ -1,6 +1,9 @@
+# netlify.toml
 [build]
-  command = "npm run build" # Adjust this based on your project's build command
-  functions = "functions"
+  command = "npm run build"
+  functions = "server"
 
-[dev]
-  command = "npm run start" # Adjust this based on your development server command
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
