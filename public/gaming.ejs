@@ -1,12 +1,25 @@
-<%- include('header.ejs'); %>
-<main>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaVerse Engine</title>
+</head>
+
+
 <body>
+  <header>
+    <%- include('header.ejs'); %>
+  </header>
+<main>
   <h1>Welcome to the Game Search App!</h1>
   
   <label for="searchInput">Search for a game:</label>
   <input type="text" id="searchInput" placeholder="Enter a game title">
   <button onclick="searchGames()">Search</button>
 </main>
+
   <div id="results"></div>
 
   <script>
@@ -39,9 +52,6 @@
       }
     }
   </script>
-
-  <footer>
     <%- include('footer.ejs'); %>
-  </footer>
 </body>
 </html>

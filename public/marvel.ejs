@@ -1,20 +1,25 @@
-<%- include('header.ejs'); %>
-
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
 <title>Marvel Character App</title>
 </head>
 
 <body>
+  <header>
+    <%- include('header.ejs'); %>
+  </header>
   <main>
-  <h1>Welcome to the Marvel Character App!</h1>
+    <h1>Welcome to the Marvel Character App!</h1>
 
-  <form onsubmit="searchCharacters(); return false;">
-    <label for="characterName">Enter Character Name and hit return to search:</label>
-    <input type="text" id="characterName" name="character" placeholder="Wolverine">
-    <button id="searchButton" type="submit">Search</button>
-  </form>
-</main>
-  <div id="characterResults"></div>
+    <form onsubmit="searchCharacters(); return false;">
+      <label for="characterName">Enter Character Name and hit return to search:</label>
+      <input type="text" id="characterName" name="character" placeholder="Wolverine">
+      <button id="searchButton" type="submit">Search</button>
+    </form>
+  </main>
 
+  <div id="characterResults">
   <script>
     function searchCharacters() {
       const searchQuery = document.getElementById('characterName').value.trim();
@@ -76,8 +81,9 @@
       }
     }
   </script>
-
+  </div>
+  <footer>
+    <%- include('footer.ejs'); %>
+  </footer>
 </body>
-<footer>
-  <%- include('footer.ejs'); %>
-</footer>
+</html>

@@ -1,10 +1,21 @@
-<%- include('header.ejs'); %>
-<main>
-  <title>Movie Search App</title>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaVerse Engine</title>
 </head>
 
 <body>
+  <header>
+    <%- include('header.ejs'); %>
+  </header>
+
+<main>
+
 <h1>Movie Search Engine</h1>
+
 
 <form onsubmit="searchMovies(); return false;">
   <label for="searchInput">Search for a movie:</label>
@@ -12,6 +23,7 @@
   <button id="searchButton" type="submit">Search</button>
 </form>
 </main>
+
 <div id="results"></div>
 
 <script>
@@ -72,8 +84,9 @@
     }
   }
 </script>
+<%- include('footer.ejs'); %>
 </body>
-<footer>
-  <%- include('footer.ejs'); %>
-</footer>
+
+  
+
 </html>
