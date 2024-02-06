@@ -16,16 +16,11 @@ html {
 }
 
 
-p {
-  font-family: phudu;
-}
-
 body {
   font-family: 'Arial', sans-serif;
   position: relative;
   align-items: center;
   text-align: center;
-  overflow: hidden;
   margin-bottom: 10px;
   min-height: 100vh; /* Set minimum height to full viewport height */
   display: flex;
@@ -43,8 +38,13 @@ input {
   border-radius: 10px;
 }
 
-#result {
-  align-items: center;
+#results {
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: hidden; 
+  scrollbar-width: 0;/* Disable vertical scrolling */
+  /* width of the static content */ px;
 }
 
 .form-group {
@@ -136,6 +136,7 @@ main {
   padding: 20px;
   font-family: phudu;
 }
+
 
 footer {
   background-color: #333;
