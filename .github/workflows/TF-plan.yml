@@ -1,9 +1,19 @@
+name: Terraform Plan
+
 on:
   workflow_run:
     workflows: ["Initialize Terraform"]
     types:
       - completed
 
-- name: Terraform Plan
+jobs:
+  terraform-plan:
+    needs: initialize-terraform
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Terraform Plan
         run: terraform plan
         working-directory: ./terraform
