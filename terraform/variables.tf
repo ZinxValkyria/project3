@@ -1,11 +1,11 @@
 variable "docker_user" {
   type    = string
-    default = "${"secrets.user"}"
+  default = "secrets.user"
 }
 
 variable "docker_pass" {
   type    = string
-  default = "${"secrets.docker_pass"}"
+  default = "secrets.docker_pass"
 }
 
 variable "vpc_cidr" {
