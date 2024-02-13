@@ -1,0 +1,30 @@
+name: Dispatch Jobs on Push to Main
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+
+  aws-login:
+      name: AWS login 
+      uses: ./.github/workflows/TF-AWS_login.yml
+      secrets: inherit
+
+  terraform-init:
+    name: Terraform init 
+    needs: [aws-login]
+    uses: ./.github/workflows/TF-init.yml
+    secrets: inherit
+
+  terraform-plan:
+         name: Terraform Plan 
+         needs:   terraform-init
+         uses: ./.github/workflows/TF-AWS_login.yml
+         secrets: inherit
+
+    
+  
