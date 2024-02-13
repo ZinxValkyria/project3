@@ -1,3 +1,9 @@
- - name: Initialize Terraform
+on:
+  workflow_run:
+    workflows: ["AWS Infastructure Deployment"]
+    types:
+      - completed
+
+- name: Initialize Terraform
         run: terraform init
         working-directory: ./terraform
