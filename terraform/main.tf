@@ -91,11 +91,11 @@ resource "aws_instance" "MediaVerse_instance" {
   # Replace with your EC2 key pair name
   user_data = <<-EOF
               #!/bin/bash
-              sudo -i
+              sudo -i  
               sudo apt-get update -y
               sudo apt-get install -y docker.io
               sudo systemctl start docker
-              sudo docker run -d -p 3000:3000 ${"SECRET.DOCKER_P3"}
+              sudo docker run -d -p 3000:3000 zinx666/mediaverse:latest
               EOF
 
   tags = {
