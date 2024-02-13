@@ -22,7 +22,7 @@ jobs:
 
   terraform-plan:
          name: Terraform Plan 
-         needs:   terraform-init
+         needs:  [ terraform-init]
          uses: ./.github/workflows/TF-plan.yml
          secrets: inherit
 
