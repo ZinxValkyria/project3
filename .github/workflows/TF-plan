@@ -1,3 +1,9 @@
+on:
+  workflow_run:
+    workflows: ["Initial Terraform"]
+    types:
+      - completed
+
 - name: Terraform Plan
         run: terraform plan
         working-directory: ./terraform
