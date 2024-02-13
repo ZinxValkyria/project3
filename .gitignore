@@ -1,3 +1,4 @@
 node_modules
 variables.tf
 mediaverse-tf-key.pem
+.vercel

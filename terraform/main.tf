@@ -95,11 +95,11 @@ resource "aws_instance" "MediaVerse_instance" {
               sudo apt-get update -y
               sudo apt-get install -y docker.io
               sudo systemctl start docker
-              sudo docker run -d -p 3000:3000 zinx666/mediaverse:latest
+              sudo docker run -d -p 3000:3000 ${"SECRET.DOCKER_P3"}
               EOF
 
   tags = {
-    Name = "example-instance"
+    Name = "my-project-3-instance"
   }
 }
 
