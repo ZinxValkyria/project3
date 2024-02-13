@@ -23,7 +23,7 @@ jobs:
   terraform-plan:
          name: Terraform Plan 
          needs:   terraform-init
-         uses: ./.github/workflows/TF-AWS_login.yml
+         uses: ./.github/workflows/TF-plan.yml
          secrets: inherit
 
     
