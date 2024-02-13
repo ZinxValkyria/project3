@@ -2,7 +2,7 @@ name: Terraform Plan
 
 on:
   workflow_run:
-    workflows: ["Terraform init"]
+    workflows: ["Terraform Init"]
     types:
       - completed
 
