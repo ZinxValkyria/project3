@@ -7,7 +7,7 @@ on:
 
 jobs:
   set-permissions:
-    name: Set executable permissions
+    name: Set executable permissions for TF-AWS_login.yml
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
