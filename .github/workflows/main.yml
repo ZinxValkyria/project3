@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: AWS login step
-        uses: ./.github/workflows/TF-AWS_login.yml
+        run: ./.github/workflows/TF-AWS_login.yml
 
   terraform-init:
     name: Terraform init 
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Terraform init step
-        uses: ./.github/workflows/TF-init.yml
+        run: ./.github/workflows/TF-init.yml
 
   terraform-plan:
     name: Terraform Plan 
@@ -33,4 +33,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Terraform Plan step
-        uses: ./.github/workflows/TF-plan.yml
+        run: ./.github/workflows/TF-plan.yml
