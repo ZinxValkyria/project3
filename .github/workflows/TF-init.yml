@@ -7,7 +7,7 @@ on:
       - completed
 
 jobs:
-  terraform-apply:
+  terraform-init:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
