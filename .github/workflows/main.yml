@@ -21,7 +21,7 @@ jobs:
     needs: [set-permissions]
     steps:
       - name: List file permissions
-        run: ls -l ./.github/workflows/TF-AWS_login.yml
+        run: ls -l .github/workflows/TF-AWS_login.yml
 
   aws-login:
     name: AWS login 
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: AWS login step
-        run: ./.github/workflows/TF-AWS_login.yml
+        run: .github/workflows/TF-AWS_login.yml
 
   terraform-init:
     name: Terraform init 
@@ -41,7 +41,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Terraform init step
-        run: ./.github/workflows/TF-init.yml
+        run: .github/workflows/TF-init.yml
 
   terraform-plan:
     name: Terraform Plan 
@@ -51,4 +51,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Terraform Plan step
-        run: ./.github/workflows/TF-plan.yml
+        run: .github/workflows/TF-plan.yml
