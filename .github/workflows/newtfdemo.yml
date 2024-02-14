@@ -1,4 +1,4 @@
-name: Terraform Workflows
+name: Terraform Workflow
 
 on:
   push:
@@ -10,22 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AWS Configure
-        run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} && aws configure set default.region us-east-1}
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region us-east-1
 
-      - name: Check dir
-        run: ls -a
-
-      - name: access root
-        run: cd terraform
-        
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Change Directory to Terraform
+        run: cd terraform
 
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Plan
         run: terraform plan
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
