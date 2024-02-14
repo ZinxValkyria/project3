@@ -18,6 +18,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Change Directory to Root
+        run: cd ..
+
       - name: Change Directory to Terraform
         run: cd terraform
 
