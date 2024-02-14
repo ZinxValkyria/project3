@@ -1,0 +1,25 @@
+name: Terraform Workflows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: AWS Configure
+        run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} && aws configure set default.region ${{ secrets.AWS_DEFAULT_REGION }}
+        
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
