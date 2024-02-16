@@ -2,6 +2,21 @@ provider "aws" {
   region = "us-east-1" # Set your desired AWS region
 }
 
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      Version = "~>3.27"
+    }
+  }
+
+backend "s3" {
+       bucket = "[This is my test bucket]"
+       key    = "[mybucketkey]"
+       region = "east-us-1"
+   }
+}
+
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
