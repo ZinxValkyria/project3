@@ -1,3 +1,5 @@
+name: "Terraform test GH actions"
+
 on:
   push:
     branches:
