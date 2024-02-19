@@ -10,11 +10,11 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket = "[This is my test bucket]"
-    key    = "[mybucketkey]"
-    region = "us-east-1"
-  }
+backend "s3" {
+  bucket = "project-3-bucket"
+  key    = "terraform.tfstate"
+  region = "us-east-1"
+}
 }
 
 resource "aws_vpc" "main" {
