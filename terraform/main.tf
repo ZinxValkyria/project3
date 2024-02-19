@@ -47,7 +47,7 @@ resource "aws_subnet" "public_sub" {
 
 
 resource "aws_security_group" "web_sc_group" {
-  name        = "example-security-group"
+  name        = "ec2-security-group"
   description = "Example security group with inbound rules"
   vpc_id      = aws_vpc.main.id
 
