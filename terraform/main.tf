@@ -5,16 +5,16 @@ provider "aws" {
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       Version = "~>3.27"
     }
   }
 
-backend "s3" {
-       bucket = "[This is my test bucket]"
-       key    = "[mybucketkey]"
-       region = "east-us-1"
-   }
+  backend "s3" {
+    bucket = "[This is my test bucket]"
+    key    = "[mybucketkey]"
+    region = "east-us-1"
+  }
 }
 
 resource "aws_vpc" "main" {
