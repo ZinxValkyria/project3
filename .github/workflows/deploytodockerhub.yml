@@ -1,8 +1,11 @@
-name: Deploy to Dockerhub
+name: Deploy to test server
 
 on:
+    push:
+        branches:
+            - main
     workflow_dispatch:
-        
+
 jobs:
 
     build-frontend-and-push:
@@ -20,4 +23,6 @@ jobs:
         - name: Build and push Docker images
           uses: docker/build-push-action@v4.0.0
           with:
+             context: .
+             push: true
              tags: zinx666/mediaverse:v1
