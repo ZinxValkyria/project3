@@ -50,8 +50,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform plan
-        id: plan
-        if: github.event_name == 'pull_request'
+        id: plam
         run: terraform plan -no-color -input=false
 
       # Uncomment the following block to enable Terraform apply on push to main branch
