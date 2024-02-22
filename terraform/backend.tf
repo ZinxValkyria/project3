@@ -35,4 +35,8 @@ resource "aws_dynamodb_table" "statelock" {
     name = "LockID"
     type = "S"
   }
+   lifecycle {
+    prevent_destroy = true
+  }
+
 }
