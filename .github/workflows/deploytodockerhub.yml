@@ -20,4 +20,4 @@ jobs:
         - name: Build and push Docker images
           uses: docker/build-push-action@v4.0.0
           with:
-             tags: zinx666/mediaverse:latest
+             tags: zinx666/mediaverse:v1
