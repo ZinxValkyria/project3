@@ -50,8 +50,12 @@ jobs:
         run: terraform validate
 
       - name: Terraform plan
-        id: plam
+        id: plan
         run: terraform plan -no-color -input=false
+
+      - name: Terraform apply
+        id: apply
+        run: terraform apply --autoapprove
 
       # Uncomment the following block to enable Terraform apply on push to main branch
       # - name: Terraform Apply
