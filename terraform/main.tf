@@ -2,15 +2,6 @@ provider "aws" {
   region = "us-east-1" # Set your desired AWS region
 }
 
-terraform {
-  backend "s3" {
-    bucket = "project-3-bucket"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
-  }
-}
-
-
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
