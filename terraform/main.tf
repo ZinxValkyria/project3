@@ -2,113 +2,113 @@ provider "aws" {
   region = "us-east-1" # Set your desired AWS region
 }
 
-# terraform {
-#   backend "s3" {
-#     bucket = "project-3-bucket"
-#     key    = "terraform.tfstate"
-#     region = "us-east-1"
-#   }
-# }
+terraform {
+  backend "s3" {
+    bucket = "project-3-bucket"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
 
 
-# resource "aws_vpc" "main" {
-#   cidr_block           = var.vpc_cidr
-#   enable_dns_hostnames = true
+resource "aws_vpc" "main" {
+  cidr_block           = var.vpc_cidr
+  enable_dns_hostnames = true
 
-#   tags = {
-#     Name = "Mediaverse-tf-vpc"
-#   }
-# }
+  tags = {
+    Name = "Mediaverse-tf-vpc"
+  }
+}
 
-# variable "availability_zone_count" {
-#   type    = number
-#   default = 1
-# }
+variable "availability_zone_count" {
+  type    = number
+  default = 1
+}
 
-# resource "aws_subnet" "public_sub" {
-#   vpc_id                  = aws_vpc.main.id
-#   count                   = var.availability_zone_count
-#   cidr_block              = "10.0.0.0/24"
-#   availability_zone       = "us-east-1a"
-#   map_public_ip_on_launch = true
+resource "aws_subnet" "public_sub" {
+  vpc_id                  = aws_vpc.main.id
+  count                   = var.availability_zone_count
+  cidr_block              = "10.0.0.0/24"
+  availability_zone       = "us-east-1a"
+  map_public_ip_on_launch = true
 
-#   tags = {
-#     Name = "mediaverse-tf-pub-sn-${count.index + 1}"
-#   }
-# }
+  tags = {
+    Name = "mediaverse-tf-pub-sn-${count.index + 1}"
+  }
+}
 
-# resource "aws_security_group" "web_sc_group" {
-#   name        = "ec2-security-group"
-#   description = "ec2 security group with inbound rules"
-#   vpc_id      = aws_vpc.main.id
+resource "aws_security_group" "web_sc_group" {
+  name        = "ec2-security-group"
+  description = "ec2 security group with inbound rules"
+  vpc_id      = aws_vpc.main.id
 
-#   ingress {
-#     from_port   = 22
-#     to_port     = 22
-#     protocol    = "tcp"
-#     cidr_blocks = ["0.0.0.0/0"]
-#     description = "Allow SSH traffic"
-#   }
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow SSH traffic"
+  }
 
-#   ingress {
-#     from_port   = 80
-#     to_port     = 443
-#     protocol    = "tcp"
-#     cidr_blocks = ["0.0.0.0/0"]
-#     description = "Allow HTTP/HTTPS traffic"
-#   }
+  ingress {
+    from_port   = 80
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow HTTP/HTTPS traffic"
+  }
 
-#   ingress {
-#     from_port   = 3000
-#     to_port     = 3000
-#     protocol    = "tcp"
-#     cidr_blocks = ["0.0.0.0/0"]
-#     description = "Allow custom TCP traffic on port 3000"
-#   }
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow custom TCP traffic on port 3000"
+  }
 
-#   egress {
-#     from_port   = 0
-#     to_port     = 0
-#     protocol    = -1
-#     cidr_blocks = ["0.0.0.0/0"]
-#     description = "Allow all outbound traffic"
-#   }
-# }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow all outbound traffic"
+  }
+}
 
-# resource "aws_route_table" "public_rt" {
-#   vpc_id = aws_vpc.main.id
+resource "aws_route_table" "public_rt" {
+  vpc_id = aws_vpc.main.id
 
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_internet_gateway.example.id
-#   }
-# }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.example.id
+  }
+}
 
-# resource "aws_route_table_association" "rt_asc" {
-#   subnet_id      = aws_subnet.public_sub[0].id
-#   route_table_id = aws_route_table.public_rt.id
-# }
+resource "aws_route_table_association" "rt_asc" {
+  subnet_id      = aws_subnet.public_sub[0].id
+  route_table_id = aws_route_table.public_rt.id
+}
 
-# resource "aws_instance" "MediaVerse_instance" {
-#   ami                    = "ami-0c7217cdde317cfec" # Replace with your desired AMI ID
-#   instance_type          = "t2.micro"
-#   subnet_id              = aws_subnet.public_sub[0].id
-#   vpc_security_group_ids = [aws_security_group.web_sc_group.id]
-#   key_name               = "mediaverse-tf-key"
-#   user_data              = <<-EOF
-#               #!/bin/bash
-#               sudo -i  
-#               sudo apt-get update -y
-#               sudo apt-get install -y docker.io
-#               sudo systemctl start docker
-#               sudo docker run -d -p 3000:3000 zinx666/mediaverse:latest
-#               EOF
+resource "aws_instance" "MediaVerse_instance" {
+  ami                    = "ami-0c7217cdde317cfec" # Replace with your desired AMI ID
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.public_sub[0].id
+  vpc_security_group_ids = [aws_security_group.web_sc_group.id]
+  key_name               = "mediaverse-tf-key"
+  user_data              = <<-EOF
+              #!/bin/bash
+              sudo -i  
+              sudo apt-get update -y
+              sudo apt-get install -y docker.io
+              sudo systemctl start docker
+              sudo docker run -d -p 3000:3000 zinx666/mediaverse:latest
+              EOF
 
-#   tags = {
-#     Name = "my-project-3-instance"
-#   }
-# }
+  tags = {
+    Name = "my-project-3-instance"
+  }
+}
 
-# resource "aws_internet_gateway" "example" {
-#   vpc_id = aws_vpc.main.id
-# }
+resource "aws_internet_gateway" "example" {
+  vpc_id = aws_vpc.main.id
+}
