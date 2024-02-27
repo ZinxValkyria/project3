@@ -85,8 +85,8 @@ resource "aws_instance" "MediaVerse_instance" {
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public_sub[0].id
   vpc_security_group_ids = [aws_security_group.web_sc_group.id]
-  key_name               = "mediaverse-tf-key"
-  user_data              = <<-EOF
+  # key_name               = "mediaverse-tf-key"
+  user_data = <<-EOF
               #!/bin/bash
               sudo -i  
               sudo apt-get update -y

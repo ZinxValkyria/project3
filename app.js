@@ -48,6 +48,10 @@ app.get('/gaming', (req, res) => {
   res.render('gaming');
 });
 
+app.get('/user', (req, res) => {
+  res.render('user');
+});
+
 
 app.get('/search', async (req, res) => {
   try {
