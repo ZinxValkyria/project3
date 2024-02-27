@@ -66,11 +66,6 @@
               <p>Series: ${character.series.available}</p>
               <p>Stories: ${character.stories.available}</p>
               <p>Events: ${character.events.available}</p>
-
-              <p>URLs:</p>
-              <ul>
-                ${character.urls.map(url => `<li><a href="${url.url}" target="_blank">${url.type}</a></li>`).join('')}
-              </ul>
             </div>
           `;
           characterList.appendChild(characterItem);

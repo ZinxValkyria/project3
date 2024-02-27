@@ -1,9 +1,0 @@
-# netlify.toml
-[build]
-  command = "npm run build"
-  functions = "server"  # Point to the server directory
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server/:splat"
-  status = 200
