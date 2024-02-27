@@ -21,13 +21,13 @@ The customer would like to develop a user-friendly web app for searching Marvel 
 The proposed budget for this project is £1000.
 
 ### Time and Labor Costs:
-- Planning and Design: $250
-- Development: $500
-- Testing and QA: $150
-- Deployment and Launch: $100
+- Planning and Design: £250
+- Development: £500
+- Testing and QA: £150
+- Deployment and Launch: £100
 ### Infrastructure Costs:
-- Dockerization: $50
-- Terraform Implementation: $50
+- Dockerization: £50
+- Terraform Implementation: £50
 
 
 ## This breakdown allocates the budget across the different stages of the project, including planning, development, testing, deployment, and infrastructure setup. Adjustments can be made based on specific requirements and priorities.
