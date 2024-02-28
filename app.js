@@ -56,7 +56,7 @@ app.get('/user', (req, res) => {
 app.get('/search', async (req, res) => {
   try {
     const searchQuery = req.query.query;
-    const apiKey = '7930cc9ef2b94485a6ca5cd3d3788bfd'; // Replace with your RAWG API key
+    const apiKey = '7930cc9ef2b94485a6ca5cd3d3788bfd'; 
     const apiUrl = 'https://api.rawg.io/api/games';
     const response = await axios.get(apiUrl, {
       params: {
@@ -72,8 +72,6 @@ app.get('/search', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-// Sta
 
 
 // Set up a route to handle API requests for Studio Ghibli films
