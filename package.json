@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "copyfiles -u 1 public/**/* dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp -r public dist" ,
     "dev": "npm start && nodemon app.js",
     "start": "node app.js"
   },
