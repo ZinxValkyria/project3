@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build": "copyfiles -u 1 public/**/* dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm start && nodemon app.js",
-    "start": "node app.js",
-    "build": "npm install"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
