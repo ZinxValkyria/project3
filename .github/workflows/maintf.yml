@@ -1,0 +1,43 @@
+name: Main Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.after }}
+
+      - name: Trigger Checkout Workflow
+        run: |
+          echo "Triggering Checkout Workflow"
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/checkout.yml/dispatches \
+            -d '{"ref": "${{ github.event.after }}"}'
+
+      - name: Trigger Setup Workflow
+        run: |
+          echo "Triggering Setup Workflow"
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/setup.yml/dispatches \
+            -d '{"ref": "${{ github.event.after }}"}'
+
+      - name: Trigger Terraform Init Workflow
+        run: |
+          echo "Triggering Terraform Init Workflow"
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/terraform-init.yml/dispatches \
+            -d '{"ref": "${{ github.event.after }}"}'
+
+      # Add other steps for triggering remaining workflows
