@@ -10,11 +10,11 @@ permissions: write-all
 jobs:
   apply:
     name: Terraform Apply 
-    uses: ./.github/workflows/apply.yml
+    uses: ./.github/workflows/terraform-apply.yml
     secrets: inherit   
 
   destroy:
     name: Terraform Destroy
-    uses: ./.github/workflows/destroy.yml
+    uses: ./.github/workflows/terraform-destroy.yml
     needs: [apply]
     secrets: inherit
