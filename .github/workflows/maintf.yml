@@ -8,19 +8,13 @@ on:
 permissions: write-all
 
 jobs:
-  infra:
-    # terraform
-    name: Terraform Init
-    uses: ./.github/workflows/terraform-init.yml
-    secrets: inherit
-    
-  format_and_plan:
-    name: Format and Plan Infra
-    uses: ./.github/workflows/terraform-init.yml
-    secrets: inherit
-    
   apply:
     name: Terraform Apply 
     uses: ./.github/workflows/apply.yml
-    needs: [/]
     secrets: inherit   
+
+  destroy:
+    name: Terraform Destroy
+    uses: ./.github/workflows/destroy.yml
+    needs: [apply]
+    secrets: inherit
