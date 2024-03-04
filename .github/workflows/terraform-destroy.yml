@@ -19,5 +19,5 @@ jobs:
         working-directory: terraform
     steps:
       - uses: actions/checkout@v4
-      - name: Terraform destroy
-        run: terraform destroy --auto-approve
+      - name: Terraform init and destroy
+        run: Terraform init && terraform destroy --auto-approve
