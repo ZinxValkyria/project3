@@ -1,8 +1,8 @@
 name: Build and Push Docker Image
 
 on:
-  workflow_dispatch:  # Adjust branch name as needed
-
+  push:  # Adjust branch name as needed
+    branches: ["main"]
 jobs:
   build_and_push:
     name: Build and Push
