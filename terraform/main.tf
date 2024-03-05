@@ -100,6 +100,6 @@ resource "aws_instance" "MediaVerse_instance" {
   }
 }
 
-resource "aws_internet_gateway" "example" {
+resource "aws_internet_gateway" "Mediaverse-internet-gateway" {
   vpc_id = aws_vpc.main.id
 }
