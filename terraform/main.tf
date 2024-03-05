@@ -71,7 +71,7 @@ resource "aws_route_table" "public_rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.example.id
+    gateway_id = aws_internet_gateway.mediaverse-internet-gateway.id
   }
 }
 
@@ -100,6 +100,6 @@ resource "aws_instance" "MediaVerse_instance" {
   }
 }
 
-resource "aws_internet_gateway" "Mediaverse-internet-gateway" {
+resource "aws_internet_gateway" "mediaverse-internet-gateway" {
   vpc_id = aws_vpc.main.id
 }
