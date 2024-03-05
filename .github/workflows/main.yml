@@ -1,11 +1,6 @@
 name: "Terraform test GH actions"
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'terraform/**'
   pull_request:
     branches:
       - main
