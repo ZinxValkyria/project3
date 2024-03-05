@@ -31,6 +31,7 @@ jobs:
   apply:
     name: Terraform Apply 
     uses: ./.github/workflows/terraform-apply.yml
+    needs: [build_and_push]
     secrets: inherit   
 
   destroy:
