@@ -1,7 +1,7 @@
 # Customer Brief: Multi-Database Search Web Application
 
 ## Overview
-The customer would like to develop a user-friendly web app for searching Marvel comic books, games, and movies across multiple databases. The solution will be Dockerized, Terraformed, and integrated with a robust CI/CD pipeline.
+The customer would like to develop a user-friendly web app for searching Marvel comic books, games, and movies across multiple databases. The solution needs to be lightweight and ready to deploy anywhere at any time.
 
 ## Objectives
 1. **Database Integration:** Use public api calls to retrieve relevant information.
