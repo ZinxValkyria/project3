@@ -1,0 +1,10 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"  # Adjust this if your build command is different
+  publish = "public"         # Change this to your Express.js app folder
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
