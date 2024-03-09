@@ -172,7 +172,6 @@ h1 {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  border-style: dashed;
 }
 
 .flex-container {
