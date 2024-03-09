@@ -4,3 +4,6 @@ mediaverse-tf-key.pem
 
 .terraform
 .terraform.*
+# Local Netlify folder
+.netlify
+.vercel
