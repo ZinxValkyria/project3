@@ -18,3 +18,6 @@ EXPOSE 3000
 
 # Command to run the application
 CMD ["node", "app.js"]
+
+# Specify the port the application listens on
+ENV PORT=3000
