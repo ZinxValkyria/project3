@@ -6,7 +6,10 @@
   "scripts": {
     "build": "",
     "dev": "npm start && nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest",
+    "test:mocha": "mocha",
+    "test:jest": "jest"
   },
   "author": "",
   "license": "ISC",
