@@ -4,7 +4,6 @@ const crypto = require('crypto');
 const ejs = require('ejs');
 const path = require('path');
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'public'));
@@ -28,7 +27,7 @@ function generateMarvelHash() {
 
 app.set('view engine', 'ejs');
 
-// Set up a simple route to serve the HTML page
+// Set up routes
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -53,7 +52,6 @@ app.get('/user', (req, res) => {
   res.render('user');
 });
 
-
 app.get('/search', async (req, res) => {
   try {
     const searchQuery = req.query.query;
@@ -74,14 +72,9 @@ app.get('/search', async (req, res) => {
   }
 });
 
-
-// Set up a route to handle API requests for Studio Ghibli films
 app.get('/api/anime', async (req, res) => {
   try {
-    // Make a request to the Studio Ghibli API
     const response = await axios.get('https://ghibliapi.herokuapp.com/films');
-
-    // Respond with JSON data
     res.json(response.data);
   } catch (error) {
     console.error('Error fetching anime data:', error.message);
@@ -89,24 +82,17 @@ app.get('/api/anime', async (req, res) => {
   }
 });
 
-
-
-
-// Set up a route to handle API requests
 app.get('/api/character', async (req, res) => {
   try {
     const characterName = req.query.character;
     const { timestamp, hash } = generateMarvelHash();
 
-    // Make a request to the Marvel Comics API
     const response = await axios.get(
       `https://gateway.marvel.com/v1/public/characters?name=${characterName}&apikey=${publicKey}&ts=${timestamp}&hash=${hash}`
     );
 
-    // Extract relevant character information
     const characterData = response.data.data.results[0];
 
-    // Respond with JSON data
     res.json({
       id: characterData.id,
       name: characterData.name,
@@ -121,13 +107,15 @@ app.get('/api/character', async (req, res) => {
       urls: characterData.urls
     });
   } catch (error) {
+    console.error('Error fetching character data:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-module.exports = app;
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+} else {
+  module.exports = app;
+}
