@@ -3,18 +3,6 @@ const axios = require('axios');
 const crypto = require('crypto');
 const ejs = require('ejs');
 const path = require('path');
-const request = require('supertest');
-const app = require('../app'); // Adjust the path based on your directory structure
-
-describe('GET /', () => {
-  test('It should respond with status 200 and render index page', async () => {
-    const response = await request(app).get('/');
-    expect(response.status).toBe(200);
-    expect(response.text).toContain('index');
-  });
-});
-
-// Add more tests for other routes...
 
 
 const app = express();

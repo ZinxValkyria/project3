@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./app');
+const app = require('../app');
 
 describe('GET /', () => {
   test('It should respond with status 200 and render index page', async () => {
