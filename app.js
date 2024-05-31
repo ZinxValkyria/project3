@@ -121,7 +121,6 @@ app.get('/api/character', async (req, res) => {
       urls: characterData.urls
     });
   } catch (error) {
-    console.error('Error fetching character data:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
