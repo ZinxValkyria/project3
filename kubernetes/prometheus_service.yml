@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+spec:
+  selector:
+    app: prometheus
+  ports:
+    - protocol: TCP
+      port: 9090  # Port exposed by the Service
+      targetPort: 9090  # Port that Prometheus is listening on inside the Pods
+  type: ClusterIP
