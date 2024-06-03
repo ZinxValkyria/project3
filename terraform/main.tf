@@ -7,7 +7,7 @@ resource "aws_vpc" "main" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "Mediaverse-tf-vpc"
+    Name = "Mediaverse-tf-vpc_pleasework"
   }
 }
 
